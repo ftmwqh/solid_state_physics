@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage{ctex}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{indentfirst}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{subfigure}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{multirow}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+	pdftitle={Overleaf Example},
+	pdfpagemode=FullScreen,
+}
+\geometry{left=1.2cm,right=1.2cm,top=2cm,bottom=2cm}
+\title{\songti \zihao{2}\bfseries 对准动量的理解}
+\titleformat*{\section}{\songti\zihao{4}\bfseries}
+\titleformat*{\subsection}{\songti\zihao{5}\bfseries}
+\renewcommand\thesection{\arabic{section}}
+\author{王启骅 PB20020580}
+\begin{document}
+	\maketitle
+	我觉得，在讨论准动量这个概念之前，我们需要先回顾一下动量这个在我们的日常学习中讨论的已经是如数家珍的物理量的定义和物理意义。首先根据牛顿第一定律，我们推论得到了动量是物体在它的运动方向上保持运动的趋势。由此我们得到了关于动量的一个量化的定义，物体质量与它的速度的乘积
+	\begin{equation}
+		\vec{p}=m\vec{v}
+	\end{equation}
+同样对于无静止质量的光子，其动量的定义为
+\begin{equation}
+	p=\frac{h}{\lambda}=\frac{E}{c}
+\end{equation}
+更进一步我们在分析力学中，对与动量有了更普适的定义，即为平移对称性对应的守恒量。
+
+
+接下来我们开始讨论准动量。准动量是为了描述晶体的晶格振动而引入的一个物理量，根据晶格原子在平行位置附近会受到原子间的相互作用力近似为整个晶体原子群整体的简谐振动，从而振动的波矢即对应着晶体的准动量
+\begin{equation}
+	\vec{p}=\hbar\vec{q}
+\end{equation}
+在晶体中，晶格振动会形成波，而波必然携带有能量和动量。而在量子力学体系下，由于简谐振子的能量是量子化的，能级间隔为$ \hbar w $,那么我们也可以把这种晶格振动的波量子化为声子这种携带着能量$ \hbar w $和准动量$ \hbar\vec{q} $的准粒子。正如它的名称phonon那样，声子可以理解为量子化的某种机械波或声波。由于声子是我们完全通过量子力学的效应构想出来的粒子，他是我们反应晶体的集体性振动模式的相关物理性质而引入，并不是真实的物理粒子，所以他所携带的动量并不是真实的物理动量。
+
+
+但是虽然如此，准动量也与真正的动量存在着一些相似的地方与联系。声子在与物理的粒子之间发生相互作用时其所携带的准动量与能量存在着准动量守恒和能量守恒的关系。例如当光子与晶体发生非弹性散射时，会激发或湮灭声子，其过程中存在能量守恒关系与动量守恒关系
+\begin{equation}
+	E(\vec{k}')-E(\vec{k})=\pm\hbar w_s(\vec{q})
+	\label{eq4}
+\end{equation}
+\begin{equation}
+	\vec{k}'-\vec{k}=\pm \vec{q}+\vec{K}_h
+	\label{eq5}
+\end{equation}
+由此可以看出声子所具有的准动量确实拥有动量类似的物理性质。式(\ref{eq4})、(\ref{eq5})可以来理解为我们对以前所学的一些宏观上看“动量、能量不守恒”的物理实例所进行的一些补充，可以说解决了我们在之前的物理学习中对于一些非弹性过程中关于这些损失的能量、动量到哪里去了的疑问。可以看出，声子所携带的能量与准动量其实是对应了类似于我们之前所学的非弹性碰撞中动能会转化成内能，也就是原子的振动。也由此可见声子与其所携带的能量与准动量，必须是依赖晶体晶格而存在的。准动量的产生与消失一定会导致声子的产生与湮灭，而声子是只有在晶格振动的情况下才定义出的，存在晶格的前提下才能产生。这里也说明了准动量并非真实的物理动量。
+
+
+上过曾老师的课后，在这里其实我在某一天洗澡的时候想到了一个可能不太恰当的比喻。我们学生公寓的淋浴间是排列整齐的一个一个的隔间，进入隔间需要通过一扇弹簧推拉门，就像老式西部电影的酒吧大门一样。一般在近入隔间的时候，如果轻轻推开，就没什么关系。但是会有一些并不太在意的同学，总是喜欢狠狠的推门甩门，这就导致了在门关上的时候，剧烈碰撞，导致所有附近的隔间都可以感觉到隔板在振动。我觉得这些一个个的洗澡隔间就像是晶体的晶格点阵一样，而这个同学甩门的动作就好比是一个入射的光子，与隔间点阵发生了非弹性碰撞。在这个过程中，入射光子的动量和能量就转化为了隔间的振动，也就是声子的准动量和能量。
+
+
+同时我们上课还将过了对于整体晶体原子的振动的动量
+\begin{equation}
+	P=M\dfrac{d}{dt}u(t)\sum_{n}e^{iqna}=M\dfrac{d}{dt}u(t)N\delta_{q,0}
+\end{equation}
+反应的既是声子所具有的真实物理动量，可见只有在声子的波矢 q=0时会有原子振动的整体物理动量，但是这个运动模式是不是一个传播的波，而是原子群整体没有相对位移的振动，由于不存在原子间由于偏离平衡态的简谐力，所以根据定义，该模式并不属于声子。而对于$ q\neq0 $的其他情况，有整体动量为0，这意味着虽然声子拥有与振动波矢相关的准动量，但是由于晶体点阵的周期性结构与边界条件，导致所有原子的振荡的各自动量由于存在相位差而相互抵消，最终和动量为0 。所以由此可见准动量并不携带物理动量。
+
+
+相对于物理动量作为平移对称性的守恒量，准动量的守恒律并不能从连续空间中的诺特定理中得到。这是由于晶体中空间格点的对称性是离散的，所以准动量所对应的波函数存在着$ u(x)=u(x+a) $的周期性关系，这也就导致了准动量平移不变性是离散的。
+
+
+所以综上所述，准动量这个物理意义，存在着许多与动量相似的物理特性，而又因为它是由晶体点阵紧密联系，并不是真实粒子所携带的，又导致了它的一些性质与物理动量有所不同。
+\end{document}
