@@ -1,0 +1,189 @@
+\documentclass{article}
+\usepackage{ctex}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{indentfirst}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{subfigure}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{multirow}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+	pdftitle={Overleaf Example},
+	pdfpagemode=FullScreen,
+}
+\geometry{left=1.2cm,right=1.2cm,top=2cm,bottom=2cm}
+\title{\songti \zihao{2}\bfseries 电子拓扑效应的调研}
+\titleformat*{\section}{\songti\zihao{4}\bfseries}
+\titleformat*{\subsection}{\songti\zihao{5}\bfseries}
+\renewcommand\thesection{\arabic{section}}
+\author{王启骅 PB20020580}
+\begin{document}
+	\maketitle
+	电子的拓扑效应与电子在绝热近似下贝里相位的性质有很大的关系。贝里相位实际上也被贝里本人称为几何相位，这是由于它是微分流形中的在曲面上的"Parallel transport",也被翻译为“平行移动”造成的结果。这是在绝热近似下，某一个量是受到其一个参数的控制，该参数是缓慢的变化，导致我们研究的量并没有局域的变化率。但是当我们将参数以一个闭合曲线改变并回到初始位置时，我们会发现我们研究的量无法回到它的初始状态。这既是一种种Local的不变但是最后导致Global的变化。他的一个经典的例子就是傅科摆，也是老师上课讨论过的，当把一个与球面相切的矢量沿着平行于球面的方向按任意路径移动一周，最终回到原点时该矢量并无法回到自己原来的方向，尽管他在每一点并没有沿径向的角速度。
+	
+	
+	类似的，贝里相位就是将以上讨论的矢量换为量子力学中的态矢量，我们会发现它在一周的变化后会产生一定的相位差。当系统的哈密顿量受到一个参数的控制绝热变化时，假设初始时刻系统处于一个能量的本征态$ |n\rangle $，我们会发现一个周期后尽管系统可以回归到本征态$ |n\rangle $,但他会与初态相差一个相位。
+	
+	
+	首先对于本征方程
+	\begin{equation}
+		H(t)|n;t\rangle=E_n(t)|n;t\rangle
+	\end{equation}
+	和薛定谔方程
+	\begin{equation}
+		|\alpha;t\rangle=H(t)|\alpha;t\rangle
+	\end{equation}
+	通解为
+	\begin{equation}
+		|\alpha;t\rangle=\sum_{n}c_n(t)e^{i\theta_n(t)}|n;t\rangle
+	\end{equation}
+其中
+\begin{equation}
+	\theta_n(t)=-\frac{1}{\hbar}\int_{0}^{t}E_n(t')dt'
+\end{equation}
+带入方程可以得到
+\begin{equation}
+	\dot{c}_m(t)=-c_m(t)\langle m;t\bigg[\dfrac{\partial}{\partial t }|m;t\rangle\bigg]-\sum_{n}c_n(t)e^{i(\theta_n-\theta_m)}\frac{\langle m;y|\dot{H}|n;t\rangle}{E_n-E_m}
+	\label{eq:5}
+\end{equation}
+我们可以带入绝热近似条件，即略去(\ref{eq:5})的第二项，
+\begin{equation}
+	c_n(t)=e^{i\gamma_n(t)}c_n(0)
+\end{equation}
+其中
+\begin{equation}
+	\gamma_n(t)=i\int_{0}^{t}\langle n;t'|\bigg[\dfrac{\partial}{\partial t'}|n;t'\rangle\bigg]dt'
+\end{equation}
+根据本征态的基的正交归一性，容易验证这个相位$ \gamma_n $是实数。
+
+
+当初始时刻系统处于一个能量本征态$ |n\rangle $,则有
+\begin{equation}
+	|\alpha;t\rangle=e^{i\gamma_n(t)}e^{i\theta_n(t)}|n;t\rangle
+\end{equation}
+对于H与时间无关的情况下
+\begin{equation}
+	|n;t\rangle=e^{-i\frac{E_n}{\hbar}t}|n\rangle
+\end{equation}
+可以得到
+\begin{equation}
+	\langle n;t|\bigg[\dfrac{\partial}{\partial t}|n;t\rangle\bigg]=-i\frac{E_n}{\hbar}
+\end{equation}
+该式可以得到
+\begin{equation}
+	\gamma_n(t)=\frac{E_n t}{\hbar}
+\end{equation}
+\subsection{对贝里相位的讨论}
+这里我们假设哈密顿量是由一个参数$ \boldsymbol{R}(t) $控制，可以得到
+\begin{equation}
+	\langle n;t|\bigg[\dfrac{\partial}{\partial t}|n;t\rangle\bigg]=	\langle n;t|\bigg[\nabla_{\boldsymbol{R}}|n;t\rangle\bigg]\cdot\dfrac{d\boldsymbol{R}}{dt}
+\end{equation}
+我们可以得到上述的相位
+\begin{equation}
+	\gamma_n(T)=i\int_{\boldsymbol{R}(0)}^{\boldsymbol{R}(T)}\langle n;t|\bigg[\nabla_{\boldsymbol{R}}|n;t\rangle\bigg]\cdot d\boldsymbol{R}
+\end{equation}
+在一个完整的周期下，$ \boldsymbol{R}(0)=\boldsymbol{R}(T) $,矢量$ \boldsymbol{R} $沿着一条完整的曲线积分
+\begin{equation}
+	\gamma_n(C)=i\oint\langle n;t|\bigg[\nabla_{\boldsymbol{R}}|n;t\rangle\bigg]\cdot d\boldsymbol{R}
+\end{equation}
+可以定义
+\begin{equation}
+	\boldsymbol{A_n}(\boldsymbol{R})=i\langle n;t|\bigg[\nabla_{\boldsymbol{R}}|n;t\rangle\bigg]
+	\label{eq:15}
+\end{equation}
+\begin{equation}
+	\boldsymbol{B_n}(\boldsymbol{R})=\nabla_{\boldsymbol{R}}\times \boldsymbol{A_n}(\boldsymbol{R})
+	\label{eq:16}
+\end{equation}
+带入斯托克斯定理
+\begin{equation}
+	\gamma_n=\int \boldsymbol{B_n}(\boldsymbol{R})\cdot d\boldsymbol{a}
+\end{equation}
+其中$ d\boldsymbol{a} $为闭合路径包围的曲面上的面元。
+
+
+在这里我们发现如果给态乘以一个随$ \boldsymbol{R} $变化的相位因子，
+\begin{equation}
+	e^{i\delta(\boldsymbol{R})}|n;t\rangle
+\end{equation}
+我们会发现
+\begin{equation}
+	\boldsymbol{A_n}(\boldsymbol{R})\rightarrow\boldsymbol{A_n}(\boldsymbol{R})-\nabla_{\boldsymbol{R}}\delta(\boldsymbol{R})
+\end{equation}
+在这样的变化下$\gamma_n$并不会发生改变，这是一个类似于电磁场的规范变换的形式。说明这个相位$\gamma_n$并不依赖于沿路径的相位细节，而是只与路径的几何形状有关，这也是为何贝里称其为几何相位。
+
+
+接下来我们可以将(\ref{eq:15})带入(\ref{eq:16})得到
+\begin{equation}
+	\boldsymbol{B_n}=i\bigg[\nabla_{\boldsymbol{R}}\langle n;t|\bigg]\times\bigg[\nabla_{\boldsymbol{R}}|n;t\rangle\bigg]
+\end{equation}
+可以插入完备基，利用$ |n;t\rangle $为能量本征态可得
+\begin{equation}
+	\boldsymbol{B_n}(\boldsymbol{R})=i\sum_{m\neq n}\frac{\langle n;t|[\nabla_{\boldsymbol{R}}H]|m;t\rangle\times\langle m;t|[\nabla_{\boldsymbol{R}}H]|n;t\rangle}{(E_m-E_n)^2}
+\end{equation}
+\subsection{布洛赫波形式下的贝里相位}
+在周期性的晶格中，电子有如下哈密顿量
+\begin{equation}
+	H=\frac{\hat{p}^2}{2m}+V(\boldsymbol{r})
+\end{equation}
+周期势场具有性质
+\begin{equation}
+	V(\boldsymbol{r}+\boldsymbol{a})=V(\boldsymbol{r})
+\end{equation}
+电子本征波函数满足
+\begin{equation}
+	\psi_{n\boldsymbol{q}}(\boldsymbol{r}+\boldsymbol{a})=e^{i\boldsymbol{q}\cdot\boldsymbol{a}}\psi_{n\boldsymbol{q}}(\boldsymbol{r})
+\end{equation}
+我们可以由此对哈密顿量进行幺正变换得到
+\begin{equation}
+	H(\boldsymbol{q})=e^{-i\boldsymbol{q}\cdot\boldsymbol{r}}He^{i\boldsymbol{q}\boldsymbol{r}}=\frac{(\hat{p}+\hbar\boldsymbol{q})^2}{2m}+V(\boldsymbol{r})
+\end{equation}
+这样哈密顿量就变成了依赖于参数$ \boldsymbol{q} $的形式，变换后的波函数为
+\begin{equation}
+	u_{n\boldsymbol{q}}(\boldsymbol{r})=e^{-i\boldsymbol{q}\cdot\boldsymbol{r}}\psi_{n\boldsymbol{q}}(\boldsymbol{r})
+\end{equation}
+该波函数满足周期性条件
+\begin{equation}
+	u_{n\boldsymbol{q}}(\boldsymbol{r}+\boldsymbol{a})=u_{n\boldsymbol{q}}(\boldsymbol{r})
+\end{equation}
+这个布洛赫波就会产生贝里相位
+\begin{equation}
+	\gamma_n=\oint_C \langle u_n(\boldsymbol{q})|i\nabla_{\boldsymbol{q}}|u_n(\boldsymbol{q})\rangle \cdot d\boldsymbol{q}
+\end{equation}
+在这里我们可以通过加磁场使电子在动量空间中旋转产生闭合曲线，这种方法当然只能存在于2D或3D空间，但是我们可以利用周期性得到另一种方法。通过加一个电场，改变$ \boldsymbol{q} $,当其跨过一整个布里渊区时$ \boldsymbol{q}\rightarrow \boldsymbol{q}+\boldsymbol{G} $，其中$ \boldsymbol{G} $为倒格矢。则我们可以通过相位选择使变化前后为完全相同的态
+\begin{equation}
+	\psi_{n}(\boldsymbol{q})=\psi_{n}(\boldsymbol{q}+\boldsymbol{G})
+\end{equation}
+\begin{equation}
+	u_{n\boldsymbol{q}}(\boldsymbol{r})=e^{i\boldsymbol{G}\cdot\boldsymbol{r}}u_{n\boldsymbol{q}+\boldsymbol{G}}(\boldsymbol{r})
+\end{equation}
+该规范被称为周期性规范,贝里相位为
+\begin{equation}
+	\gamma_n=\int_{BZ} \langle u_n(\boldsymbol{q})|i\nabla_{\boldsymbol{q}}|u_n(\boldsymbol{q})\rangle \cdot d\boldsymbol{q}
+\end{equation}
+也被称为Zak's phase。我们可以发现这个相位的产生完全是基于布里渊区的拓扑效应。
+
+\subsection{参考文献}
+[1]樱井纯，J.拿波里塔诺.现代量子力学基础[M].
+
+
+[2]Xiao, Di and Chang, Ming-Che and Niu, Qian, Berry phase effects on electronic properties[J]RevModPhys, 82, 3, 1959--2007(2010),Doi:10.1103/RevModPhys.82.1959.
+	
+	
+[3]Michael Berry, Anticipations of the Geometric Phase[J]Physics Today 43, 12, 34 (1990), Doi: 10.1063/1.881219.
+
+
+[4]Barry R. Holstein,The adiabatic theorem and Berry’s phase[J]American Journal of Physics 57, 1079 (1989); Doi: 10.1119/1.15793.
+
+
+
+\end{document}

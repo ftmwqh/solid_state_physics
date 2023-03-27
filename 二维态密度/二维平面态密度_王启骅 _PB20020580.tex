@@ -1,0 +1,83 @@
+\documentclass{article}
+\usepackage{ctex}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{indentfirst}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{subfigure}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{multirow}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+	pdftitle={Overleaf Example},
+	pdfpagemode=FullScreen,
+}
+\geometry{left=1.2cm,right=1.2cm,top=2cm,bottom=2cm}
+\title{\songti \zihao{2}\bfseries 二维平面的态密度}
+\titleformat*{\section}{\songti\zihao{4}\bfseries}
+\titleformat*{\subsection}{\songti\zihao{5}\bfseries}
+\renewcommand\thesection{\arabic{section}}
+\author{王启骅 PB20020580}
+\begin{document}
+	\maketitle
+在二维平面上，k空间中2$\rho(\boldsymbol{k})\times$能量在$ E-E+dE $的等能线之间的面积即为E到E+dE的能态数，其中
+\begin{equation}
+	\rho(\boldsymbol{k})=\frac{S}{(2\pi)^2}
+\end{equation}
+则
+\begin{equation}
+	dZ=2\frac{S}{(2\pi)^2}\int_{E=const}dldk_{\perp}
+\end{equation}
+带入
+\begin{equation}
+	dE=|\nabla_{k}E|\cdot dk_{\perp}
+\end{equation}
+得到
+\begin{equation}
+	N(E)=\frac{1}{S}\dfrac{dZ}{dE}=\frac{1}{2\pi^2}\int_{E=const}\frac{dl}{|\nabla_{k}E(k)|}
+\end{equation}
+
+
+根据电子抛物线色散关系
+\begin{equation}
+	E(\boldsymbol{k})=\frac{\hbar^2k^2}{2m}
+\end{equation}
+\begin{equation}
+	|\nabla_{k}E(k)|=\frac{\hbar^2}{m}k
+\end{equation}
+带入积分得到
+\begin{equation}
+	N(E)=\frac{1}{2\pi^2}\frac{m}{\hbar2k}2\pi k=\frac{m}{\pi\hbar^2}
+\end{equation}
+可以比对与石墨烯的态密度，得到二者相等。
+
+
+但是在石墨烯位于布里渊区格点附近的低能电子，具有线性色散关系
+\begin{equation}
+	E=\hbar v_F \sqrt{k_x^2+k_y^2}
+\end{equation}
+其中
+\begin{equation}
+	v_F\sim10^6m/s
+\end{equation}
+为费米速度，则
+\begin{equation}
+	|\nabla_{k}E|=|\hbar v_F \frac{k_x\hat{x}+k_y\hat{y}}{k}|=\hbar v_F
+\end{equation}
+得到
+\begin{equation}
+	N(E)=\frac{1}{2\pi^2}\int_{E=const}\frac{dl}{|\nabla_{k}E(k)|}=\frac{E}{\pi\hbar^2 v_F^2}
+\end{equation}
+
+
+可见对于二维下线性色散，N$\propto\sqrt{E}$,由此可见与抛物线形式色散为常数的区别。
+
+\end{document}
